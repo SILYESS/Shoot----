@@ -34,6 +34,7 @@ public class PlayerControl : MonoBehaviour
         //Movement action
         playerRb.velocity = new Vector3(horInput * runSpeed * Time.deltaTime,0 , vertInput * runSpeed * Time.deltaTime);
         
+        
 
        /* transform.Translate(Vector3.forward * vertInput * runSpeed * Time.deltaTime);
         transform.Translate(Vector3.right * horInput * runSpeed * Time.deltaTime);*/
