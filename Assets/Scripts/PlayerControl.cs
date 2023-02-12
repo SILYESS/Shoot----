@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float turnSpeed = 20.0f;
     [SerializeField] private float zBound = 22.0f;
     [SerializeField] private float xBound = 15.0f;
+    [SerializeField] private int amount = 20;
 
     private Vector3 moveDire;
     private bool isDead;
@@ -78,6 +79,15 @@ public class PlayerControl : MonoBehaviour
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
+            isDead = true;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        currentHealth -= amount;
+        if (currentHealth <= 0)
+        {
+            gameObject.SetActive(false);
             isDead = true;
         }
     }

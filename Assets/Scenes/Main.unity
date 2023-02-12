@@ -599,27 +599,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.7632961, y: 1.6665859, z: 3.3416698}
   m_Center: {x: 0.0069971085, y: 0.7779887, z: 0.020043254}
---- !u!1 &89047677 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 913101255133875975, guid: 2ab70cbc483e28442b8dc37ddcf4aca9, type: 3}
-  m_PrefabInstance: {fileID: 2066488757724654041}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &89047681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89047677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e052d5f2c39631428b3618dfad38bb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 8460836532865921847, guid: 2ab70cbc483e28442b8dc37ddcf4aca9, type: 3}
-  bulletPrefab: {fileID: 100000, guid: 5a7989cc093e9fd45b43766b00610594, type: 3}
-  bulletSpeed: 20
-  fireRate: 1
 --- !u!1001 &139104529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2994,7 +2973,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 919132149321124471}
-  enemyWeap: {fileID: 9089220182346013058, guid: 5c95e1f878e57924ba6b374e73d6c700, type: 3}
+  attackPoint: {x: 0, y: 0, z: 0}
+  bulletPrefab: {fileID: 100000, guid: 5a7989cc093e9fd45b43766b00610594, type: 3}
+  bulletSpeed: 20
+  fireRate: 1
   turnSpeed: 20
   attackRange: 5
   attackDamage: 20
@@ -5764,6 +5746,14 @@ PrefabInstance:
     - target: {fileID: 8460836532865921847, guid: 2ab70cbc483e28442b8dc37ddcf4aca9, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8785674781482706462, guid: 2ab70cbc483e28442b8dc37ddcf4aca9, type: 3}
+      propertyPath: m_Size.y
+      value: 2.665893
+      objectReference: {fileID: 0}
+    - target: {fileID: 8785674781482706462, guid: 2ab70cbc483e28442b8dc37ddcf4aca9, type: 3}
+      propertyPath: m_Center.y
+      value: 3.1917613
       objectReference: {fileID: 0}
     - target: {fileID: 9088612951156238733, guid: 2ab70cbc483e28442b8dc37ddcf4aca9, type: 3}
       propertyPath: m_RootOrder

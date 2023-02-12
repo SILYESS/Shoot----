@@ -6,7 +6,18 @@ public class EnemyScript : MonoBehaviour
 {
     // Reference to the player character
     public GameObject player;
-    public GameObject enemyWeap;
+
+    public Vector3 attackPoint;
+
+    public GameObject bulletPrefab;
+    // Speed of the bullet
+    public float bulletSpeed = 20.0f;
+
+    // Rate of fire in shots per second
+    public float fireRate = 1.0f;
+
+    // Timer to track the time between shots
+    private float shotTimer = 0.0f;
 
     [SerializeField] private float turnSpeed;
 
@@ -43,7 +54,7 @@ public class EnemyScript : MonoBehaviour
                 attackTimer = 0.0f;
 
                 // Deal damage to the player
-                enemyWeap.GetComponent<EnemyWeapen>().Shoot();
+                Shoot();
             }
         }
     }
@@ -56,6 +67,18 @@ public class EnemyScript : MonoBehaviour
             var rotation = Quaternion.LookRotation(enemyDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, turnSpeed);
         }
+    }
+    void Shoot()
+    {
+        attackPoint = new Vector3(transform.position.x, 1f, transform.position.z - 0.5f);
+        GameObject bullet = Instantiate(bulletPrefab,attackPoint , transform.rotation);
+        shotTimer = Time.time + fireRate;
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        rb.velocity = transform.forward * bulletSpeed;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
     }
 }
 
