@@ -6,6 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
     // Reference to the player character
     public GameObject player;
+    public GameObject dead;
 
     public Vector3 attackPoint;
     public ParticleSystem gunEffect;
@@ -34,9 +35,14 @@ public class EnemyScript : MonoBehaviour
     // Timer to track the time between attacks
     private float attackTimer = 0.0f;
 
+    //Sound effect
+    private AudioSource playerAudio;
+    public AudioClip gunSound;
+    public AudioClip hit;
     void Start()
     {
         gunEffect.Stop();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,9 +59,11 @@ public class EnemyScript : MonoBehaviour
             {
                 // Reset the attack timer
                 attackTimer = 0.0f;
-
-                // Deal damage to the player
-                Shoot();
+                if (player.GetComponent<PlayerControl>().currentHealth > 0)
+                {
+                    // Deal damage to the player
+                    Shoot();
+                }
             }
         }
     }
@@ -71,11 +79,12 @@ public class EnemyScript : MonoBehaviour
     }
     void Shoot()
     {
-        var gunEffectRotation = Quaternion.Inverse(transform.rotation);
-        attackPoint = new Vector3(transform.position.x, 1f, transform.position.z-0.4f);
+        var gunEffectPoint = new Vector3(transform.position.x, 1f, transform.position.z);
+        attackPoint = new Vector3(transform.position.x, 1.5f, transform.position.z);
         GameObject bullet = Instantiate(bulletPrefab,attackPoint , transform.rotation);
-        Instantiate(gunEffect, attackPoint,transform.rotation);
+        Instantiate(gunEffect, gunEffectPoint,transform.rotation);
         gunEffect.Play();
+        playerAudio.PlayOneShot(gunSound, 1);
         shotTimer = Time.time + fireRate;
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.velocity = transform.forward * bulletSpeed;
@@ -83,6 +92,8 @@ public class EnemyScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+        Instantiate(dead, new Vector3( transform.position.x,0,transform.position.z), transform.rotation);
+        playerAudio.PlayOneShot(hit, 1);
     }
 }
 

@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerControl : MonoBehaviour
 {
     private Rigidbody playerRb;
 
-    [SerializeField] private float runSpeed = 1000;
+    [SerializeField] private float runSpeed = 750;
     [SerializeField] private float turnSpeed = 20.0f;
     [SerializeField] private float zBound = 22.0f;
     [SerializeField] private float xBound = 15.0f;
@@ -14,13 +17,25 @@ public class PlayerControl : MonoBehaviour
 
     private Vector3 moveDire;
     private bool isDead;
-    [SerializeField] private int currentHealth;
+    public int currentHealth;
+    public GameObject dead;
+    public Joystick joystick;
+
+    public Button restart;
+    public Button exit;
+
+    public TextMeshProUGUI hp;
+    public TextMeshProUGUI gameOver;
+
+    private AudioSource playerAudio;
+    public AudioClip hit;
 
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        playerAudio = GetComponent<AudioSource>();
     }
     private void Awake()
     {
@@ -33,12 +48,13 @@ public class PlayerControl : MonoBehaviour
         MovePlayer();
         RotateTo();
         ConstrainMove();
+        hp.text = currentHealth.ToString() + " %";
     }
     void MovePlayer()
     {
         //Get inputs
-        float vertInput = Input.GetAxis("Vertical");
-        float horInput = Input.GetAxis("Horizontal");
+        float vertInput = joystick.Vertical;
+        float horInput = joystick.Horizontal;
 
         //Movement action
         playerRb.velocity = new Vector3(horInput * runSpeed * Time.deltaTime,0 , vertInput * runSpeed * Time.deltaTime);
@@ -77,6 +93,7 @@ public class PlayerControl : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        
         if (currentHealth <= 0)
         {
             isDead = true;
@@ -85,10 +102,24 @@ public class PlayerControl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         currentHealth -= amount;
+        playerAudio.PlayOneShot(hit, 1);
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
             isDead = true;
+            Instantiate(dead, new Vector3(transform.position.x, 0, transform.position.z), transform.rotation);
+            WaitForSeconds.Equals(0+Time.time, 2);
+            gameOver.gameObject.SetActive(true);
+            restart.gameObject.SetActive(true);
+            exit.gameObject.SetActive(true);
         }
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Main");
+    }
+    public void Quit()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
