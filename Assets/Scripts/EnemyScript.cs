@@ -8,6 +8,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject player;
 
     public Vector3 attackPoint;
+    public ParticleSystem gunEffect;
 
     public GameObject bulletPrefab;
     // Speed of the bullet
@@ -35,7 +36,7 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
-
+        gunEffect.Stop();
     }
 
     // Update is called once per frame
@@ -70,8 +71,11 @@ public class EnemyScript : MonoBehaviour
     }
     void Shoot()
     {
-        attackPoint = new Vector3(transform.position.x, 1f, transform.position.z - 0.5f);
+        var gunEffectRotation = Quaternion.Inverse(transform.rotation);
+        attackPoint = new Vector3(transform.position.x, 1f, transform.position.z-0.4f);
         GameObject bullet = Instantiate(bulletPrefab,attackPoint , transform.rotation);
+        Instantiate(gunEffect, attackPoint,transform.rotation);
+        gunEffect.Play();
         shotTimer = Time.time + fireRate;
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.velocity = transform.forward * bulletSpeed;
