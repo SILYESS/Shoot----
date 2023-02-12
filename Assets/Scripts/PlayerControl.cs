@@ -10,19 +10,27 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float turnSpeed = 20.0f;
     [SerializeField] private float zBound = 22.0f;
     [SerializeField] private float xBound = 15.0f;
-    private Vector3 moveDire; 
+
+    private Vector3 moveDire;
+    private bool isDead;
+    [SerializeField] private int currentHealth;
+
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
     }
+    private void Awake()
+    {
+        currentHealth = 100;
+    }
 
     // Update is called once per frame
     void Update()
     {
         MovePlayer();
-        rotateTo();
+        RotateTo();
         ConstrainMove();
     }
     void MovePlayer()
@@ -40,7 +48,7 @@ public class PlayerControl : MonoBehaviour
         transform.Translate(Vector3.right * horInput * runSpeed * Time.deltaTime);*/
     }
 
-    void rotateTo()
+    void RotateTo()
     {
         if (playerRb.velocity.magnitude == 0) { return; }
         var rotation = Quaternion.LookRotation(playerRb.velocity);
@@ -63,6 +71,14 @@ public class PlayerControl : MonoBehaviour
         else if (transform.position.z < -zBound)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, -zBound);
+        }
+    }
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        if (currentHealth <= 0)
+        {
+            isDead = true;
         }
     }
 }
