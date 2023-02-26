@@ -2748,8 +2748,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -25}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -131.50293, y: -38.546265}
+  m_SizeDelta: {x: 263.0059, y: 77.0925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &774196119
 MonoBehaviour:
@@ -2798,8 +2798,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3268,11 +3268,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ee6d01b0779446c4c8b12dd4c62a92a9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 24208d917d1767846bba8f7e8b7a7f66, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4600,11 +4600,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200.9167
+      value: 266.6443
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 204.5889
+      value: 263.3056
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4636,11 +4636,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 156
+      value: 188.8638
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 135
+      value: 164.35832
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4901,8 +4901,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -99.24646, y: 62.48781}
-  m_SizeDelta: {x: 81.6225, y: 80.0244}
+  m_AnchoredPosition: {x: -117.23804, y: 79.78061}
+  m_SizeDelta: {x: 117.6055, y: 114.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1384939216
 MonoBehaviour:
@@ -7401,7 +7401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4b46b0fbf5bc04886e344b6806407c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 750
+  runSpeed: 200
   turnSpeed: 20
   zBound: 22
   xBound: 15
@@ -7414,6 +7414,7 @@ MonoBehaviour:
   hp: {fileID: 774196119}
   gameOver: {fileID: 966600515}
   hit: {fileID: 8300000, guid: 7e759564d54b2b341854202daf2edc2c, type: 3}
+  playerAnim: {fileID: 0}
 --- !u!54 &919132149321124473
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7443,26 +7444,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9129865, y: 3.6886158, z: 0.88984996}
   m_Center: {x: 0, y: 3.7196002, z: 0.000009745359}
---- !u!95 &919132149321124475
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149321124471}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fdb80f692131d1b45b0adbdb94a9f678, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &919132149321124477
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7559,6 +7540,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &919132149321124479
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149321124471}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e7e417f0245aabe4e80a7736d25333da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2066488757724654041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7694,7 +7695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3817768329348002302, guid: 9e38140da2d47e94db179df789049455, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -9.96
       objectReference: {fileID: 0}
     - target: {fileID: 3817768329348002302, guid: 9e38140da2d47e94db179df789049455, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7702,7 +7703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3817768329348002302, guid: 9e38140da2d47e94db179df789049455, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -15.66
       objectReference: {fileID: 0}
     - target: {fileID: 3817768329348002302, guid: 9e38140da2d47e94db179df789049455, type: 3}
       propertyPath: m_LocalRotation.w

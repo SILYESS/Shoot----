@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
 {
     private Rigidbody playerRb;
 
-    [SerializeField] private float runSpeed = 750;
+    [SerializeField] private float runSpeed = 200;
     [SerializeField] private float turnSpeed = 20.0f;
     [SerializeField] private float zBound = 22.0f;
     [SerializeField] private float xBound = 15.0f;
@@ -30,12 +30,15 @@ public class PlayerControl : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip hit;
 
+    public Animator playerAnim;
+
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         playerAudio = GetComponent<AudioSource>();
+        playerAnim = GetComponent<Animator>();
     }
     private void Awake()
     {
@@ -58,11 +61,15 @@ public class PlayerControl : MonoBehaviour
 
         //Movement action
         playerRb.velocity = new Vector3(horInput * runSpeed * Time.deltaTime,0 , vertInput * runSpeed * Time.deltaTime);
-        
-        
 
-       /* transform.Translate(Vector3.forward * vertInput * runSpeed * Time.deltaTime);
-        transform.Translate(Vector3.right * horInput * runSpeed * Time.deltaTime);*/
+        /* transform.Translate(Vector3.forward * vertInput * runSpeed * Time.deltaTime);
+         transform.Translate(Vector3.right * horInput * runSpeed * Time.deltaTime);*/
+        if (playerRb.velocity != new Vector3(0, 0, 0))
+        {
+            playerAnim.SetFloat("runSpeed_f", 1);
+            playerAnim.set
+        }
+        else playerAnim.SetFloat("runSpeed_f", 0);
     }
 
     void RotateTo()
